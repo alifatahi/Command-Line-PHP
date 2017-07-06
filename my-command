@@ -8,6 +8,9 @@ require 'vendor/autoload.php';
 
 $app = new Application('My-Command','1.0');
 
-$app->add(new NewCommand(new GuzzleHttp\Client));
+$app->add(new Acme\RenderCommand);
+
+
+//$app->add(new NewCommand(new GuzzleHttp\Client));
 
 $app->run();
