@@ -92,7 +92,7 @@ class CurlMultiHandler
             }
         }
 
-        // Step through the task queue which may add additional requests.
+        // Step through the tasks queue which may add additional requests.
         P\queue()->run();
 
         if ($this->active &&

@@ -2,9 +2,9 @@
 namespace GuzzleHttp\Promise;
 
 /**
- * Get the global task queue used for promise resolution.
+ * Get the global tasks queue used for promise resolution.
  *
- * This task queue MUST be run in an event loop in order for promises to be
+ * This tasks queue MUST be run in an event loop in order for promises to be
  * settled asynchronously. It will be automatically run when synchronously
  * waiting on a promise.
  *
@@ -32,7 +32,7 @@ function queue(TaskQueueInterface $assign = null)
 }
 
 /**
- * Adds a function to run in the task queue when it is next `run()` and returns
+ * Adds a function to run in the tasks queue when it is next `run()` and returns
  * a promise that is fulfilled or rejected with the result.
  *
  * @param callable $task Task function to run.

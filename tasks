@@ -1,0 +1,29 @@
+#! /usr/bin/env php
+
+<?php
+
+use Symfony\Component\Console\Application;
+require 'vendor/autoload.php';
+
+//Name  Our App And Declare Version
+$app  = new Application('Task App','1.0');
+
+try{
+    $pdo = new PDO('mysql:host=localhost;dbname=tasks','root','123');
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+}catch (PDOException $e){
+    echo "Connection Failed";
+    exit(1);
+}
+
+$dbAdapter = new Acme\DatabaseAdapter($pdo);
+
+//add new Command
+$app->add(new Acme\ShowCommand($dbAdapter));
+$app->add(new Acme\AddCommand($dbAdapter));
+$app->add(new Acme\CompleteCommand($dbAdapter));
+
+//run App
+$app->run();
+
